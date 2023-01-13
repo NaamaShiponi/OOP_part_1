@@ -1,7 +1,7 @@
  # OOP_part_1
  
 
-### Overview
+## Overview
 This project is a simple Java program that demonstrates the use of different methods for creating text files and counting
 the number of lines in them. The program creates a specified number of text files, each containing a random number of lines.
 It then counts the total number of lines in all the files using three different methods: a sequential method, a method using threads,
@@ -10,7 +10,7 @@ console. This project can be used as a starting point for more complex text file
 of different methods. However, it is important to note that the actual performance will depend on the number of files, resources available
 on the machine, and the size of the files. Proper testing and optimization should be done before using the code in production
 
-### Diagram of the classes:
+## Diagram of the classes:
                             ---------------------------------------------------------------------------------
                            |                                                                                 |
                            |                      +---------------------------+                              |
@@ -68,14 +68,27 @@ In this project, we have created text files and counted the number of lines in t
 getNumOfLinesThreads and getNumOfLinesThreadPool. We will assume before running the tests that getNumOfLinesThreadPool method is more efficient
 than getNumOfLinesThreads method and both are more efficient than the getNumOfLines method.
 but to our surprise we received that getNumOfLinesThreadPool and getNumOfLinesThreads were about the same time,
-getNumOfLines time: 118587220
-getNumOfLinesThreads time: 957879700
-getNumOfLinesThreadPool time: 740942400
+
+
+                                               
+getNumOfLines time: 118587220                  
+                                               
+getNumOfLinesThreads time: 957879700           
+                                               
+getNumOfLinesThreadPool time: 740942400        
+                                               
+
 this is due to the fact that we defined the amount of threads in getNumOfLinesThreadPool to be the number of files and because creating a thread takes a lot of resources
 There was not an improvement in times, but if we divide the number of threads by 20 in getNumOfLinesThreadPool we will get that the results are as what we expected at the beginning.
-getNumOfLines time: 1818281700
-getNumOfLinesThreads time: 1187790800
-getNumOfLinesThreadPool time: 387295100
+
+                                               
+getNumOfLines time: 1818281700                 
+                                               
+getNumOfLinesThreads time: 1187790800          
+                                               
+getNumOfLinesThreadPool time: 387295100        
+                                               
+
 This project can be used as a starting point for more complex text fileprocessing tasks and to compare the time efficiency of different methods.
 
                             
