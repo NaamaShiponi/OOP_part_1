@@ -68,7 +68,6 @@ public class Ex2_1 {
         for(int i = 0; i < fileNames.length; i++) {
             Path path = Paths.get(fileNames[i]);
             try {
-
                 sumLines += Files.lines(path).count();
 
             } catch (IOException e) {
@@ -95,6 +94,7 @@ public class Ex2_1 {
             ThreadsFoNumOfLines getNumLines=new ThreadsFoNumOfLines(fileNames[i]);
             arrOfThreads[i]=getNumLines;
             getNumLines.start();
+
         }
 
         for(int i = 0; i < fileNames.length; i++) {
@@ -103,7 +103,7 @@ public class Ex2_1 {
         }
         long endTime = System.nanoTime();
         long duration = (endTime - startTime);
-        System.out.println("time:"+duration);
+        System.out.println("time Threads:"+duration);
         return sumLines;
     }
 
@@ -116,7 +116,7 @@ public class Ex2_1 {
     public static int getNumOfLinesThreadPool(String[] fileNames) throws Exception {
         int sumLines=0;
         Future<Integer> futures[] =new Future[fileNames.length];
-        ExecutorService executorService= Executors.newFixedThreadPool(fileNames.length/30);
+        ExecutorService executorService= Executors.newFixedThreadPool(fileNames.length);
         long startTime = System.nanoTime();
 
         for(int i = 0; i < fileNames.length; i++) {
@@ -127,12 +127,13 @@ public class Ex2_1 {
         }
         long endTime = System.nanoTime();
         long duration = (endTime - startTime);
-        System.out.println("time:"+duration);
+        System.out.println("time ThreadPool:"+duration);
+        executorService.shutdown();
         return sumLines;
     }
 
     public static void main(String[] args) throws Exception {
-        int seed = 1, n = 2000, bound = 4000;
+        int seed = 1, n = 1, bound = 1000;
         int normalCount,threadsCount,callableCount;
         String fileNames[];
         fileNames = createTextFiles(n,seed,bound);
